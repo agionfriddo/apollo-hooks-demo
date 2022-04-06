@@ -3,6 +3,7 @@ import Continents from "./Continents";
 import ContinentsLazy from "./ContinentsLazy";
 import Countries from "./Countries";
 import CountriesByContinent from "./CountriesByContinent";
+import ContinentsWithCodeVariable from "./CountriesWithCodeVariable";
 import Country from './Country';
 
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/continents" element={<Continents />} />
         <Route path="/continents/:code" element={<CountriesByContinent />} />
         <Route path="/continentsLazy" element={<ContinentsLazy />} />
+        <Route path="/continentsWithCodeVariable" element={<ContinentsWithCodeVariable />} />
       </Routes>
     </div>
   );
