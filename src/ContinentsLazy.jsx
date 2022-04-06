@@ -26,7 +26,10 @@ const GET_COUNTRIES_BY_CONTINENT = gql`
 `
 
 const ContinentsLazy = () => {
-  const { data, loading } = useQuery(GET_CONTINENTS);
+  const { data, loading } = useQuery(GET_CONTINENTS, {
+    fetchPolicy: "cache-and-network",
+    nextFetchPolicy: "cache-first"
+  });
   const [getCountries, { data: countryData }] = useLazyQuery(GET_COUNTRIES_BY_CONTINENT);
   const handleClick = (code) => {
     getCountries({
