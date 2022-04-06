@@ -8,6 +8,9 @@ const GET_COUNTRIES = gql`
       code
       name
       emoji
+      continent {
+        code
+      }
     }
   }
 `
