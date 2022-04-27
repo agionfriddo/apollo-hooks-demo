@@ -19,16 +19,9 @@ const GET_COUNTRIES_BY_CONTINENT = gql`
 
 const CountriesByContinent = () => {
   const { code } = useParams();
-  const [countries, setCountries] = useState([]);
-  const [continent, setContinent] = useState('');
   const { data, loading, error } = useQuery(GET_COUNTRIES_BY_CONTINENT, {
     variables: {
       filter: { continent: { eq: code } }
-    },
-    onCompleted: (data) => {
-      console.log(data);
-      setCountries(data.countries);
-      setContinent(data.countries[0].continent.name);
     }
   });
 
@@ -43,7 +36,7 @@ const CountriesByContinent = () => {
     <div>
       <h1>Countries From {continent}</h1>
       <ul>
-        {countries.map(({ name, emoji, code }) => (
+        {data.countries.map(({ name, emoji, code }) => (
           <li key={name}>
             <Link to={`/${code}`}>
               {name} {emoji}

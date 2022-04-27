@@ -16,10 +16,14 @@ const GET_COUNTRIES = gql`
 `
 
 const Countries = () => {
-  const { data, loading } = useQuery(GET_COUNTRIES);
+  const { data, loading, error } = useQuery(GET_COUNTRIES);
 
   if (loading || !data) {
     return <p>loading</p>
+  }
+
+  if (error) {
+    return 'There was an error';
   }
   return (
     <div>
