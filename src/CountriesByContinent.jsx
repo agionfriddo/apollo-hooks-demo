@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client"
 
@@ -34,7 +34,7 @@ const CountriesByContinent = () => {
   }
   return (
     <div>
-      <h1>Countries From {continent}</h1>
+      <h1>Countries From</h1>
       <ul>
         {data.countries.map(({ name, emoji, code }) => (
           <li key={name}>

@@ -23,7 +23,13 @@ const GET_COUNTRY_DETAIL = gql`
 `
 
 const Country = () => {
-  const { data, loading } = useQuery(GET_COUNTRY_DETAIL);
+  const { code } = useParams();
+  const { data, loading } = useQuery(GET_COUNTRY_DETAIL, {
+    variables: {
+      code
+    },
+    skip: true
+  });
 
   if (loading) {
       return <p>Loading...</p>

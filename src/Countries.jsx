@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client"
 
 
@@ -25,15 +24,14 @@ const Countries = () => {
   if (error) {
     return 'There was an error';
   }
+
   return (
     <div>
       <h1>Countries</h1>
       <ul>
-        {data.countries.map(({ name, emoji, code }) => (
+        {data.countries.map(({ name, emoji }) => (
           <li key={name}>
-            <Link to={`/${code}`}>
-              {name} {emoji}
-            </Link>
+            {name} {emoji}
           </li>
         ))}
       </ul>
