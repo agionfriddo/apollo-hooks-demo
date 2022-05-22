@@ -28,6 +28,7 @@ const Country = () => {
     variables: {
       code
     },
+    skip: true
   });
 
   if (loading) {

@@ -28,10 +28,7 @@ const GET_COUNTRIES_BY_CONTINENT = gql`
 
 const ContinentsWithCodeVariable = () => {
   const [code, setCode] = useState('');
-  const { data, loading } = useQuery(GET_CONTINENTS, {
-    fetchPolicy: "cache-and-network",
-    nextFetchPolicy: "cache-first"
-  });
+  const { data, loading } = useQuery(GET_CONTINENTS);
   const { data: countryData } = useQuery(GET_COUNTRIES_BY_CONTINENT, {
     variables: {
       filter: { continent: { eq: code } }

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client"
 
 
@@ -16,20 +15,23 @@ const GET_COUNTRIES = gql`
 `
 
 const Countries = () => {
-  const { data, loading } = useQuery(GET_COUNTRIES);
+  const { data, loading, error } = useQuery(GET_COUNTRIES);
 
   if (loading || !data) {
     return <p>loading</p>
   }
+
+  if (error) {
+    return 'There was an error';
+  }
+
   return (
     <div>
       <h1>Countries</h1>
       <ul>
-        {data.countries.map(({ name, emoji, code }) => (
+        {data.countries.map(({ name, emoji }) => (
           <li key={name}>
-            <Link to={`/${code}`}>
-              {name} {emoji}
-            </Link>
+            {name} {emoji}
           </li>
         ))}
       </ul>
